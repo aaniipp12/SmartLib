@@ -9,11 +9,8 @@ use App\Models\Peminjaman;
 
 class DashboardController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware(['auth', 'role:siswa']);
-    }
-
+    // Hapus __construct() method - middleware diterapkan di routes
+    
     public function index()
     {
         $user = auth()->user();
