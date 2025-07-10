@@ -9,14 +9,18 @@ use App\Models\Peminjaman;
 
 class DashboardController extends Controller
 {
-    // Hapus __construct() method - middleware diterapkan di routes
-    
     public function index()
     {
         $user = auth()->user();
         
+        // Get buku wajib berdasarkan tingkat kelas siswa
+        $bukuWajibCount = 0;
+        if ($user->kelas) {
+            $bukuWajibCount = BukuWajib::where('tingkat', $user->kelas->tingkat)->count();
+        }
+        
         $data = [
-            'total_buku_wajib' => BukuWajib::where('kelas_id', $user->kelas_id)->count(),
+            'total_buku_wajib' => $bukuWajibCount,
             'total_buku_non_wajib' => BukuNonWajib::count(),
             'peminjaman_aktif' => Peminjaman::where('siswa_id', $user->id)
                                           ->where('status', 'dipinjam')

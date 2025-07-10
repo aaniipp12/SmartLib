@@ -14,7 +14,7 @@ class BukuWajib extends Model
     protected $fillable = [
         'judul',
         'mata_pelajaran',
-        'kelas_id',
+        'tingkat',
         'penerbit',
         'isbn',
         'tahun_terbit',
@@ -29,9 +29,9 @@ class BukuWajib extends Model
     }
 
     // Relationships
-    public function kelas()
+    public function kelasYangMenggunakan()
     {
-        return $this->belongsTo(Kelas::class);
+        return $this->hasMany(Kelas::class, 'tingkat', 'tingkat');
     }
 
     public function detailPeminjaman()
@@ -43,5 +43,10 @@ class BukuWajib extends Model
     public function isAvailable()
     {
         return $this->stok > 0;
+    }
+
+    public function getTingkatNamaAttribute()
+    {
+        return "Kelas {$this->tingkat}";
     }
 }

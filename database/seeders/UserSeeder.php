@@ -12,7 +12,7 @@ class UserSeeder extends Seeder
     {
         // Create Super Admin
         $superAdmin = User::create([
-            'nama' => 'Super Administrator',
+            'name' => 'Super Administrator',
             'email' => 'superadmin@smartlib.com',
             'password' => Hash::make('password'),
             'agama' => 'Islam',
@@ -23,7 +23,7 @@ class UserSeeder extends Seeder
 
         // Create Admin
         $admin = User::create([
-            'nama' => 'Administrator',
+            'name' => 'Administrator',
             'email' => 'admin@smartlib.com',
             'password' => Hash::make('password'),
             'agama' => 'Islam',
@@ -34,7 +34,7 @@ class UserSeeder extends Seeder
 
         // Create Sample Student
         $siswa = User::create([
-            'nama' => 'Ahmad Siswa',
+            'name' => 'Ahmad Siswa',
             'nis' => '2024001',
             'nisn' => '1234567890',
             'kelas_id' => 1, // Assuming first kelas exists

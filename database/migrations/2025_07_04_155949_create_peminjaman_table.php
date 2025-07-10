@@ -20,6 +20,10 @@ return new class extends Migration
             $table->enum('status', ['dipinjam', 'dikembalikan', 'terlambat'])->default('dipinjam');
             $table->timestamps();
             
+            // Foreign key constraints
+            $table->foreign('siswa_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('admin_id')->references('id')->on('users')->onDelete('cascade');
+            
             // Indexes
             $table->index('siswa_id', 'idx_siswa');
             $table->index('admin_id', 'idx_admin');

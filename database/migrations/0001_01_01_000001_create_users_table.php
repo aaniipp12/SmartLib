@@ -10,7 +10,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('nama', 100);
+            $table->string('name', 100);
             $table->string('nis', 20)->nullable()->unique();
             $table->string('nisn', 20)->nullable()->unique();
             $table->foreignId('kelas_id')->nullable()->constrained('kelas')->onDelete('set null');

@@ -10,8 +10,6 @@ use App\Models\Peminjaman;
 
 class DashboardController extends Controller
 {
-    // Hapus __construct() method - middleware diterapkan di routes
-    
     public function index()
     {
         $data = [

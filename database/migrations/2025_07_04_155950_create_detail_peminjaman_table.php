@@ -16,6 +16,9 @@ return new class extends Migration
             $table->integer('jumlah')->default(1);
             $table->timestamps();
             
+            // Foreign key constraints
+            $table->foreign('peminjaman_id')->references('id')->on('peminjaman')->onDelete('cascade');
+            
             // Indexes
             $table->index('peminjaman_id', 'idx_peminjaman');
             $table->index(['buku_id', 'jenis_buku'], 'idx_buku');

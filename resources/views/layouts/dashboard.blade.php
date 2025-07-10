@@ -5,20 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'SmartLib - Sistem Perpustakaan')</title>
-
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
-
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
-
     <!-- Custom CSS -->
     <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
-
     @stack('styles')
 </head>
 
@@ -31,10 +26,8 @@
                 <span>SmartLib</span>
             </a>
         </div>
-
         <div class="sidebar-menu">
             <div class="menu-title">Menu</div>
-
             <div class="menu-item">
                 <a href="{{ route('dashboard') }}" class="menu-link">
                     <i class="bi bi-speedometer2"></i>
@@ -44,14 +37,12 @@
 
             @if (auth()->check() && auth()->user()->hasRole('super_admin'))
                 <div class="menu-title">Super Admin</div>
-
                 <div class="menu-item">
                     <a href="#" class="menu-link">
                         <i class="bi bi-people"></i>
                         <span>Manajemen User</span>
                     </a>
                 </div>
-
                 <div class="menu-item">
                     <a href="#" class="menu-link">
                         <i class="bi bi-gear"></i>
@@ -62,35 +53,42 @@
 
             @if (auth()->check() && (auth()->user()->hasRole('admin') || auth()->user()->hasRole('super_admin')))
                 <div class="menu-title">Administrasi</div>
-
                 <div class="menu-item">
                     <a href="#" class="menu-link">
                         <i class="bi bi-person-badge"></i>
                         <span>Data Siswa</span>
                     </a>
                 </div>
-
                 <div class="menu-item">
                     <a href="#" class="menu-link">
                         <i class="bi bi-building"></i>
                         <span>Data Kelas</span>
                     </a>
                 </div>
-
                 <div class="menu-item">
-                    <a href="#" class="menu-link">
+                    <a href="{{ route('admin.buku-wajib.index') }}" class="menu-link">
                         <i class="bi bi-book"></i>
-                        <span>Manajemen Buku</span>
+                        <span>Buku Wajib</span>
                     </a>
                 </div>
-
                 <div class="menu-item">
-                    <a href="#" class="menu-link">
+                    <a href="{{ route('admin.buku-non-wajib.index') }}" class="menu-link">
+                        <i class="bi bi-journal"></i>
+                        <span>Buku Non-Wajib</span>
+                    </a>
+                </div>
+                <div class="menu-item">
+                    <a href="{{ route('admin.kategori-buku.index') }}" class="menu-link">
+                        <i class="bi bi-tags"></i>
+                        <span>Kategori Buku</span>
+                    </a>
+                </div>
+                <div class="menu-item">
+                    <a href="{{ route('admin.pengajuan-peminjaman.index') }}" class="menu-link">
                         <i class="bi bi-arrow-left-right"></i>
                         <span>Peminjaman</span>
                     </a>
                 </div>
-
                 <div class="menu-item">
                     <a href="#" class="menu-link">
                         <i class="bi bi-file-text"></i>
@@ -101,16 +99,14 @@
 
             @if (auth()->check() && auth()->user()->hasRole('siswa'))
                 <div class="menu-title">Siswa</div>
-
                 <div class="menu-item">
                     <a href="#" class="menu-link">
                         <i class="bi bi-book"></i>
                         <span>Katalog Buku</span>
                     </a>
                 </div>
-
                 <div class="menu-item">
-                    <a href="#" class="menu-link">
+                    <a href="{{ route('siswa.pengajuan-peminjaman.index') }}" class="menu-link">
                         <i class="bi bi-list-check"></i>
                         <span>Peminjaman Saya</span>
                     </a>
@@ -118,14 +114,12 @@
             @endif
 
             <div class="menu-title">Akun</div>
-
             <div class="menu-item">
                 <a href="{{ route('profile.edit') }}" class="menu-link">
                     <i class="bi bi-person"></i>
                     <span>Profil Saya</span>
                 </a>
             </div>
-
             <div class="menu-item">
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
@@ -149,9 +143,7 @@
             <button class="sidebar-toggle d-md-none" id="mobileSidebarToggle">
                 <i class="bi bi-list"></i>
             </button>
-
             <h1 class="page-title">@yield('page-title', 'Dashboard')</h1>
-
             <div class="header-right">
                 <div class="user-info">
                     <div class="user-avatar">
@@ -195,10 +187,8 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
     <!-- Custom JS -->
     <script src="{{ asset('js/dashboard.js') }}"></script>
-
     @stack('scripts')
 </body>
 
