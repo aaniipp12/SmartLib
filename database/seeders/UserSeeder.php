@@ -51,5 +51,24 @@ class UserSeeder extends Seeder
             'email_verified_at' => now(),
         ]);
         $siswa->assignRole('siswa');
+
+        $siswa = User::create([
+            'name' => 'anip',
+            'nis' => '20240011',
+            'nisn' => '12345678901',
+            'kelas_id' => 11, // Assuming first kelas exists
+            'email' => 'siswa2@smartlib.com',
+            'password' => Hash::make('password'),
+            'agama' => 'Islam',
+            'jenis_kelamin' => 'L',
+            'alamat' => 'Jl. Contoh No. 123',
+            'no_hp' => '081234567890',
+            'nama_ibu' => 'Siti Ibu',
+            'nama_ayah' => 'Budi Ayah',
+            'tempat_lahir' => 'Jakarta',
+            'tanggal_lahir' => '2010-01-01',
+            'email_verified_at' => now(),
+        ]);
+        $siswa->assignRole('siswa');
     }
 }
